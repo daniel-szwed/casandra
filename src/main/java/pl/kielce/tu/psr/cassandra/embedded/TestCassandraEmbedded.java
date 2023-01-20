@@ -62,28 +62,28 @@ public class TestCassandraEmbedded {
 		int numericValue = Character.getNumericValue(userInput);
 		switch(numericValue) {
 			case 1:
-				getAllPatients(tableManager);
+				getAllFirefighters(tableManager);
 				break;
 			case 2:
-				addPatient(tableManager);
+				addFirefighter(tableManager);
 				break;
 			case 3:
-				deletePatient(tableManager);
+				deleteFirefighter(tableManager);
 				break;
 			default:
 				System.out.println("Wybor niewlasciwy, sprobuj raz jeszcze.\n");
 		}
 	}
 
-	private static void deletePatient(FirefighterTableSimpleManager tableManager) {
-		System.out.println("Którego pacjenta usunąć? Podaj jego id:\n");
+	private static void deleteFirefighter(FirefighterTableSimpleManager tableManager) {
+		System.out.println("Którego strażaka usunąć? Podaj jego id:\n");
 		Scanner s= new Scanner(System.in);
 		String key = s.nextLine();
 		long id = Long.parseLong(key);
 		tableManager.deleteFromTable(id);
 	}
 
-	private static void addPatient(FirefighterTableSimpleManager tableManager) {
+	private static void addFirefighter(FirefighterTableSimpleManager tableManager) {
 		System.out.println("Podaj nazwisko strażaka:\n");
 		Scanner s = new Scanner(System.in);
 		String name = s.nextLine();
@@ -92,7 +92,7 @@ public class TestCassandraEmbedded {
 		tableManager.addFirefighter(name, Integer.parseInt(age));
 	}
 
-	private static void getAllPatients(FirefighterTableSimpleManager tableManager) {
+	private static void getAllFirefighters(FirefighterTableSimpleManager tableManager) {
 		tableManager.selectFromTable();
 	}
 
